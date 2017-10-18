@@ -1,0 +1,42 @@
+TRAVLENDAR+ GOAL
+
+G.0 The user can log to the application.
+	G.0.1 An unregistered user can sign up to the application.
+	G.0.2 A registered user can sign in to the application.
+	G.0.3 A logged user can log out.
+
+G.1 The Travlender can add a new event.
+	G.1.1 The travlender can decide the title of the event.
+	G.1.2 The Travlender can choose the location of the event all across Milan.
+	G.1.3 The Travlender can define the events as *****
+	G.1.4 The travlender can add a description to the event.
+
+G.2 The travlender can define and personalize his travel preferences.
+	G.2.1 The travlender can select his available travel means.
+	G.2.2 The travlender can active or deactivate the different travel means.
+	G.2.3 The travlender can provide constraints on different travel means.
+
+G.3 The travlender can customize his travels as he prefers.
+	G.3.1 The travlender can decide the combination of travel means.
+	G.3.2 The travlender can decide the route to follow in his journey.
+
+G.4 The travlender can insert special kind of events having flexible time occupation.
+	G.4.1 The travlender can decide the time interval of the event.
+	G.4.2 The travlender can select the amount of time to dedicate for the event.
+
+G.5 The travlender can modify his events.
+	G.5.1 The travlender can modify the title of the event.
+	G.5.2 The travlender can modify the time of an event.
+	G.5.3 The travlender can modify the location of an appointment.
+	G.5.4 The travlender can modify the description of the event.
+
+G.6 The travlender can delete a fixed appointment.
+
+G.7 The travlender can buy-in-app tickets for public trasportations.
+	G.7.1 The travlender can buy-in-app subscriptions for public transportations.
+	
+G.8 The travlender can benefit from vehicles sharing system.
+	G.8.1 The travlender can pick up a bike from a bike sharing station.
+	G.8.2The travlendar can take a car from a car sharing station.
+
+G9 The travlender can book a taxi for a chosen time and place.
