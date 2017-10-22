@@ -1,0 +1,33 @@
+Section [R.0] treats all the requimerements related to registration to the application:
+	R.0.1 The system must provide a registration form to the user.
+	R.0.2 The system must verify whether the user entered all the required data.
+	R.0.3 The system must check whether the user results already registered.
+	
+
+Section [R.1] treats all the requimerements related to the application login:
+	R.1.1 The system must check the input data and controls if they correspond to an existing account.
+	R.1.2 The system must guarantee the login of the user if and only if the inserted credentials results verified.
+
+
+Section [R.2] treats all the requimerements related to the creation or modification of events:
+	R.2.1 The system must verify that the user is available for the duration of the event.
+	R.2.2 The system must verify that the free time preceeding the event is long enough for the travel to the new location.
+	R.2.3 The system must control wheter it is possible for the user leaving from the previous event's location to arrive on time.
+	R.2.4 The system must control wheter it is possible for the user leaving the event to be able to arrive on time at the following event's location.
+	R.2.5 The system must control wheter given the current position the user can be able to arrive at the location on time for the appointment.
+	R.2.6 The system most inform the user when it is not possible to schedule his event in the allotted time.
+	R.2.7 The system must suggest possible solutions to arrange conflicting events: either postponing the beginning time of the later event or anticipating the ending time of the earlier one.
+	
+
+Section [R.4] treats all the requimerements related to the public means reservation:
+	R.4.1 The system must be able to locate the nearest bike to bike sharing system in the city.
+	R.4.2 The system must be able to locate the nearest car sharing system in the city.
+	R.4.3 The system must be able to locate the public trasportation areas in the city.
+
+
+Section [R.5] treats all the requimerements related to outside phenomena:
+	R.5.1 The system must notify the user in occurance of strikes.
+	R.5.2 The system must notify the user in occurance of days of bad weather.
+
+
+Section [R.6] treats all the requimerements related to the customization of the preferences:
