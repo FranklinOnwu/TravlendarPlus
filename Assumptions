@@ -6,6 +6,8 @@ APPLICATION ASSUMPTIONS
 
 A.A.1 In the minimization of carbon footprint all the public vehicles are considered like having zero-emission since the user's presence would not influence the travel mean's emission.
 A.A.2 The car's trip cost is assumed to be the same for all cars, and only depends on the distance.
+A.A.3 Established the transportation the fastest path is even the most ecologic.
+A.A.4 All the vehicles belonging to the same class has the same features (speed, pollution level, fuel cost..).
 
 
 
@@ -14,7 +16,9 @@ DOMAIN ASSUMPTIONS
 D.A.0 The payment credentials are verified by a reliable external service.
 D.A.1 The traffic informations, coming from external services are reliable.
 D.A.2 The gps positions are always accurate.
-D.A.3 It is possible to keeps track of the position of your personal means through external service.
+D.A.3 It is possible to keeps track of the position of your personal means through an external service.
 D.A.4 The cost for all car trips is given by the estimate of the kilometers per liter and euros per liter.
 D.A.5 All the trams, buses, trolleybuses and metro are available for people with disabilities.
 D.A.6 There are no unforseen events that can cause delay to the user (es. accidents).
+D.A.7 The taxi can follow the fastest route or the most economic, depending on customer request.
+D.A.8 Public transports are never full.
