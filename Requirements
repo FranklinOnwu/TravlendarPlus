@@ -4,8 +4,8 @@ Section [R.0] treats all the requimerements related to registration to the appli
 	R.0.3 The system must check whether the user results already registered.
 	
 
-Section [R.1] treats all the requimerements related to the application login:
-	R.1.1 The system must check the input data and controls if they correspond to an existing account.
+Section [R.1] treats all the requimerements related to the login:
+	R.1.1 The system must check the input data and control if they correspond to an existing account.
 	R.1.2 The system must guarantee the login of the user if and only if the inserted credentials results verified.
 
 
@@ -19,7 +19,7 @@ Section [R.2] treats all the requimerements related to the creation or modificat
 	R.2.7 The system must suggest possible solutions to arrange conflicting events: either postponing the beginning time of the later event or anticipating the ending time of the earlier one.
 	
 
-Section [R.4] treats all the requimerements related to the public means reservation:
+Section [R.4] treats all the requimerements related to the reservation means:
 	R.4.1 The system must be able to locate the nearest bike to bike sharing system in the city.
 	R.4.2 The system must be able to locate the nearest car sharing system in the city.
 	R.4.3 The system must be able to locate the public trasportation areas in the city.
@@ -31,3 +31,8 @@ Section [R.5] treats all the requimerements related to outside phenomena:
 
 
 Section [R.6] treats all the requimerements related to the customization of the preferences:
+	R.6.1 The system must allow the user the user to select the usable travel means.
+
+
+Section [R.7] treats all the requimerements related to the travel:
+	R.7.1 The system must control if the (eventual) required tickets for the travel are already owned by the user. 
