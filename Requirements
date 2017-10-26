@@ -12,9 +12,9 @@ Section [R.1] treats all the requimerements related to the login:
 Section [R.2] treats all the requimerements related to the creation or modification of events:
 	R.2.1 The system must verify that the user is available for the duration of the event.
 	R.2.2 The system must verify that the free time preceeding the event is long enough for the travel to the new location.
-	R.2.3 The system must control wheter it is possible for the user leaving from the previous event's location to arrive on time.
-	R.2.4 The system must control wheter it is possible for the user leaving the event to be able to arrive on time at the following event's location.
-	R.2.5 The system must control wheter given the current position the user can be able to arrive at the location on time for the appointment.
+	R.2.3 The system must control whether it is possible for the user leaving from the previous event's location to arrive on time.
+	R.2.4 The system must control whether it is possible for the user leaving the event to be able to arrive on time at the following event's location.
+	R.2.5 The system must control whether given the current position the user can be able to arrive at the location on time for the appointment.
 	R.2.6 The system most inform the user when it is not possible to schedule his event in the allotted time.
 	R.2.7 The system must suggest possible solutions to arrange conflicting events: either postponing the beginning time of the later event or anticipating the ending time of the earlier one.
 	
@@ -25,14 +25,12 @@ Section [R.4] treats all the requimerements related to the reservation means:
 	R.4.3 The system must be able to locate the public trasportation areas in the city.
 
 
-Section [R.5] treats all the requimerements related to outside phenomena:
-	R.5.1 The system must notify the user in occurance of strikes.
-	R.5.2 The system must notify the user in occurance of days of bad weather.
-
+Section [R.5] treats all the requimerements related to the travel:
+	R.5.1 The system must control if the (eventual) required tickets for the travel are already owned by the user.
+	R.5.2 The system must notify the user in occurrence of events scheduled on days of bad weather.
+	R.5.3 The system must manage a route planner
 
 Section [R.6] treats all the requimerements related to the customization of the preferences:
-	R.6.1 The system must allow the user the user to select the usable travel means.
+	R.6.1 The system must allow the user to select the usable travel means.
 
 
-Section [R.7] treats all the requimerements related to the travel:
-	R.7.1 The system must control if the (eventual) required tickets for the travel are already owned by the user. 
