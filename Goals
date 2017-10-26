@@ -21,7 +21,7 @@ G.1.8 The Travlender can insert the description at any later time and modify it 
 G.1.9 The Travlender can choose with how many minutes in advance to arrive to his destination.
 G.1.10 The Travlender can delete an existing event.
 
-Section [G.2] treats all the goals related to the customization of the Travlender preferences:
+Section [G.2] treats all the goals related to the customization of the TRAVLENDAR PREFERENCES:
 G.2.1 The Travlender can decide to choose the quickest route as default.
 G.2.2 The Travlender can decide to choose the cheapest route as default.
 G.2.3 The Travlender can decide to choose the most ecological route as default.
@@ -46,13 +46,17 @@ G.5.2 The Travlender can buy in-app a ticket for the bus.
 G.5.3 The Travlender can buy in-app a ticket for the trolleybus.
 G.5.4 The Travlender can buy in-app a ticket for the tram.
 G.5.5 The Travlender can buy in-app a ticket for the train.
-G.5.6 The Travlender can book in-app a taxi.
-G.5.7 The Travlender can take a bike from a bike sharing service.
-G.5.8 The Travlender can take a car from a car sharing service.
 
-Section [G.6] treats all the goals related to the category of special events:
-G.6.1 The Travlender can create a flexible event to select a minimum amount of time out of a larger time range to dedicate to the event.
-G.6.2 The Travlendar can create a non-reserved time event to an event without reservation time.
-G.6.3 The Travlender can select a location outside Milan for his event.
+Section [G.6] treats all the goals related to the shared services:
+G.6.7 The Travlender can take a bike from a bike sharing service.
+G.6.8 The Travlender can take a car from a car sharing service.
 
-Section [G.7] treats all the goals related to the travel:
+Section [G.7] treats all the goals related to the category of special events:
+G.7.1 The Travlender can create an event with flexible time occupation.
+G.7.2 The Travlendar can create a non reserved time event.
+G.7.3 The Travlender can select a location outside Milan for his event.
+
+Section [G.8] treats all the goals related to the travel:
+G.8.1 The Travlendar can customize for a travel his TRAVLENDAR PREFERENCES.
+G.8.2 The Travlendar can get the route for his event's location all over Milan.
+G.8.3 The Travlendar can get indications on the best mobility options for the travels in Milan.
