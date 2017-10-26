@@ -5,9 +5,10 @@ TEXT ASSUMPTIONS
 APPLICATION ASSUMPTIONS
 
 A.A.1 In the minimization of carbon footprint all the public vehicles are considered like having zero-emission since the user's presence would not influence the travel mean's emission.
-A.A.2 The car's trip cost is assumed to be the same for all cars, and only depends on the distance.
-A.A.3 Established the transportation the fastest path is even the most ecologic.
-A.A.4 All the vehicles belonging to the same class has the same features (speed, pollution level, fuel cost..).
+A.A.2 The cost of the the public trasportations only depends on the cost of the tickets, and it is considered free if the user already has a subscription.
+A.A.3 The car's trip cost is assumed to be the same for all cars, and only depends on the distance.
+A.A.4 Established the transportation the fastest path is even the most ecologic.
+A.A.5 All the vehicles belonging to the same class has the same features (speed, pollution level, fuel cost..).
 
 
 
@@ -22,3 +23,4 @@ D.A.5 All the trams, buses, trolleybuses and metro are available for people with
 D.A.6 There are no unforseen events that can cause delay to the user (es. accidents).
 D.A.7 The taxi can follow the fastest route or the most economic, depending on customer request.
 D.A.8 Public transports are never full.
+cause delay to the user (es. accidents).
