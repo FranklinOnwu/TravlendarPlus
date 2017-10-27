@@ -29,8 +29,6 @@ Section [R.5] treats all the requimerements related to the travel:
 	R.5.1 The system must control if the (eventual) required tickets for the travel are already owned by the user.
 	R.5.2 The system must notify the user in occurrence of events scheduled on days of bad weather.
 	R.5.3 The system must manage a route planner
-
-Section [R.6] treats all the requimerements related to the customization of the preferences:
-	R.6.1 The system must allow the user to select the usable travel means.
-
-
+	R.5.4 The system must not suggest the user to use personal car or bike in his travels from locations where these are not placed.
+Section [R.6] treats all the requimerements related to the special events:
+	R.6.1 When the user requires to start a trip in the lasting event the system must control whether it is possible for him/her to arrive at location and later reach to the next event requiring his/her presence on time.
