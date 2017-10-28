@@ -28,7 +28,8 @@ G.2.3 The Travlender can decide to choose the most ecological route as default.
 G.2.5 The Travlender can add constrains on the range of time to transports, restricting their use only in
 a chosen time slot.
 G.2.6 The Travlender can restrict the use of transports setting their use to a maximum distance per trip.
-G.2.7 The Travlender can set a maximum amount of money to spend in public or shared
+G.2.7 The Travlender can restrict the use of transports to a certain time slot.
+G.2.8 The Travlender can set a maximum amount of money to spend in public or shared
 transportations per trip.
 
 Section [G.3] treats all the goals related to the customization of the Travlender's settings:
