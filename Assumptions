@@ -1,5 +1,8 @@
 TEXT ASSUMPTIONS
 
+T.A.1 We consider z city as application's range of functionality, in particular the full support is given for the whole city of Milan.
+T.A.2 The constrains about the time limition of public means are chosen from the users and depends on their preferences. The availability of the the travel means are considered separately.
+
 
 
 APPLICATION ASSUMPTIONS
@@ -23,4 +26,6 @@ D.A.5 The cost for all car trips is given by the estimate of the kilometers per 
 D.A.6 All the trams, buses, trolleybuses and metro are available for people with disabilities.
 D.A.7 There are no unforseen events that can cause delay to the user (accidents,strikes...).
 D.A.8 The taxi can follow the fastest route or the most economic, depending on customer request.
-D.A.9 Public transports are never full. 
+D.A.9 Public transports are never full.
+D.A.10 The personal bicycles are considered to be handy, alway available for the owner.
+
