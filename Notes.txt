@@ -1,2 +1,0 @@
-1. "Remember me" sul log in
-2. recupero password/credenziali
