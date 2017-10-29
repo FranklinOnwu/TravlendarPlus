@@ -1,34 +1,36 @@
-Section [R.0] treats all the requimerements related to registration to the application:
+Section [R.0] treats all the requimerements related to the registration to the application:
 	R.0.1 The system must provide a registration form to the user.
-	R.0.2 The system must verify whether the user entered all the required data.
+	R.0.2 The system must verify whether the user filled all the required data.
 	R.0.3 The system must check whether the user results already registered.
 	
 
 Section [R.1] treats all the requimerements related to the login:
 	R.1.1 The system must check the input data and control if they correspond to an existing account.
-	R.1.2 The system must guarantee the login of the user if and only if the inserted credentials results verified.
+	R.1.2 The system must guarantee the user login if and only if the inserted credentials result verified.
 
 
 Section [R.2] treats all the requimerements related to the creation or modification of events:
 	R.2.1 The system must verify that the user is available for the duration of the event.
-	R.2.2 The system must verify that the free time preceeding the event is long enough for the travel to the new location.
-	R.2.3 The system must control whether it is possible for the user leaving from the previous event's location to arrive on time.
-	R.2.4 The system must control whether it is possible for the user leaving the event to be able to arrive on time at the following event's location.
-	R.2.5 The system must control whether given the current position the user can be able to arrive at the location on time for the appointment.
-	R.2.6 The system most inform the user when it is not possible to schedule his event in the allotted time.
-	R.2.7 The system must suggest possible solutions to arrange conflicting events: either postponing the beginning time of the later event or anticipating the ending time of the earlier one.
+	R.2.2 The system must verify that the free time preceeding the event is enough to travel to the new location.
+	R.2.3 The system must control whether it is possible for the user to leave from the previous event location to arrive on time.
+	R.2.4 The system must control whether it is possible for the user to leave the event in order to arrive on time at the following event location.
+	R.2.5 The system must control whether, since the current position is given, the user is able to arrive at the event location on time.
+	R.2.6 The system must inform the user when it is not possible to schedule his/her event in the allotted time.
+	R.2.7 The system must suggest possible solutions to arrange conflicting events, either postponing the starting time of the next event or anticipating the ending time of the previous one.
 	
 
-Section [R.4] treats all the requimerements related to the reservation means:
-	R.4.1 The system must be able to locate the nearest bike to bike sharing system in the city.
-	R.4.2 The system must be able to locate the nearest car sharing system in the city.
-	R.4.3 The system must be able to locate the public trasportation areas in the city.
+Section [R.3] treats all the requimerements related to the shared and non-shared means:
+	R.3.1 The system must be able to locate the nearest bike to bike sharing system in the city.
+	R.3.2 The system must be able to locate the nearest car sharing system in the city.
+	R.3.3 The system must be able to locate the public transports areas in the city.
 
 
-Section [R.5] treats all the requimerements related to the travel:
-	R.5.1 The system must control if the (eventual) required tickets for the travel are already owned by the user.
-	R.5.2 The system must notify the user in occurrence of events scheduled on days of bad weather.
-	R.5.3 The system must manage a route planner
-	R.5.4 The system must not suggest the user to use personal car or bike in his travels from locations where these are not placed.
-Section [R.6] treats all the requimerements related to the special events:
-	R.6.1 When the user requires to start a trip in the lasting event the system must control whether it is possible for him/her to arrive at location and later reach to the next event requiring his/her presence on time.
+Section [R.4] treats all the requimerements related to the travel:
+	R.4.1 The system must control if the (eventually) required tickets are already owned by the user.
+	R.4.2 The system must notify the user in occurrence of events scheduled on days of adverse weather conditions.
+	R.4.3 The system must establish the best route plan for the user.
+	R.4.4 The system must not suggest the user to use owned car or bike in his travels from locations where those are not placed.
+	
+	
+Section [R.5] treats all the requimerements related to the special events:
+	R.5.1 When the user requires to start to travel from a lasting event the system must control whether it is possible for him/her to arrive at the event location and reach the next one on time.
