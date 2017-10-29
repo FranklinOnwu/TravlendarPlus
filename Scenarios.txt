@@ -1,30 +1,37 @@
 SCENARIOS
 
-Scenario 1
+Scenario 1 {Registration, calendar function}
 Tom is a student who recently moved to Milan for his studies. He is a messy boy and always had his events scattared on post-its all over the house. This condition often made him miss appointments. His roommate, tired of the disorder presented to him Travlendar+, a new born application suitable for situations as Tom's.
 Tom downloaded the application and after a quick registration via facebook he transferred all the events he had hanging around in his Tlavlendar+ app.
 He was alerted when events where set in an overlapping moment and always notified in time for his events.
 In few days he gladly noticed how having all his events always under control brought an improvement in his daily routine organization. Even Carlo was happy, he could finally throw away all the post-it notes.
 
 
-Scenario 2
+Scenario 2 {Flexible event}
 Lucy is a mother who enjoys cooking but she lately spends much time complaining about her old pots. Since her birthday is close the son Mark decided to buy her a new set of pots. He recently started working, and with his other daily commitments he knows he does not have much free time. He realizes that his only chance may be on Wednesday, when there is the open market in the next street therefore he opens Travlendar+ and try to fit the new commitment in his day schedule.
 Knowing that the market starts at 8.00 a.m. and lasts until 5.00 p.m. he schedules a new flexible event in the mentioned hours and sets an occupation time of thirty minutes, time he will need to use to find the best pots for his mum. On wednesday the idea of the present was already out of his mind when, after a busy morning Travlendar+ notified him that he had the free time to spend at the market. Mark went to buy the pots and after giving them to the mother Lucy was so happy she decided to inaugurate them with a cake.
 
 
-Scenario 3
+Scenario 3 {Transfer event, editing of user's preferences for event}
 George was invited by his friend Lucas to have lunch together at a restaurant in Monza. 
 George opened Travlendar+ and exploring the map he found the restaurant and added his commitment from the map screen.
 The new event was automatically scheduled as a transfer event because Travlendar+ recognized the location as outside the Milan city. George was therefore warned that since it is a transfer Travlendar+ would not give full support for the travel: it wouldn’t be able to suggest any route for the destination and during all the time spent outside the city it wouldn't manage to compute any travel time for future appointments. George was a bit worried, since he had had the application he always relied to it completely but fortunately he is a long-standing client of Travlendar+ so he knows all the various features of the application well so before leaving he controlled his next appointment: a dinner, that same day at his grandma's place in Milan. He estimates that with the car the expected travel time from the restaurant to the grandma's house is of one hour so he just opens the event set at grandma's and modify the event's preferences setting a one hour reminder.
 Now he can leave the city without worries, aware that the everning Travlendar+ will notify him in time.
 
 
-Scenario 4
-Every year in Milan there is an electronics fair where you can find cards, headphones, storage devices and other stuff. This expo lasts a week, and Michael is a fan of this kind of things. So, he schedules a new lasting event specifying the days of beginning and end.
-The first day’s event a notification is popped up, advising Michael that, during the day, there are events, but he is very busy and can’t go anywhere. The day after another notification is showed. This time he has some free time in the afternoon, so, instead of deleting the notification/*invece di eliminarla fa “ricordamelo dopo”->funzione da aggiungere da qualche parte? */, he keeps it as reminder. In the early afternoon he wants to go there, taps on the pop up and sets the usual parameters needed to reach a location, then the travel starts.
+Scenario 4 {Lasting event, start trip button, event editing}
+Every year in Milan there is an electronics fair where you can find all kind of electronics products and services.
+Mike is passionate about electronics so he would happily attended some stands if he finds the occasion and this year may be the right one since the expo has the special duration of one week.
+Mike schedules the occation as a lasting event indicating the usual informations where he specifies the days of opening and closing of the fair.
+The day the fair started a notification popped up on Mike's phone to reminding him of the event.
+Mike was excited because he discovered that there was going to be a presentation about virtual reality he wanted to attend so as soon as he finished his work shift he decides to move to the fair. He opens the event and taps the start trip button. Unfortunately the application warns him that it is not possible to start the trip because the time needed to get there won't allow him to arrive on time at the next event.
+Indeed Mike was forgetting that that night he had appointment at the theatre with his friend Carl. After a moment of reflection he decides to give the priority to the fair so he calls his friend to arrange a new appointment. They confirmed the decision of a theatre but had to change the theatre because the former one didn't have interesting shows that day.
+Mike modifies the theatre event, changes the time and place of the meeting and adds a description as a reminder not to miss the appointment. After the confirmation of edit Mike could start his journey to the electronic fair.
+The next day, in the morning Mike sees a low-priority notification that informs him there are ongoing events: it's still the electronic fair. This time he just ignores it because he cannot disappoint his friend.
 
 
-Scenary 5
+
+Scenario 5 {multi transport function, preferences customization, ticket purchase, travelling constrains}
 Carl is an environmental advocate, and has an important conference about the sustainable development. During his speech he had an excursus about how the Travlendar+ application helped him get to the converence location that same night.
 He talked about how he valued the possibility that the application gave him that morning in letting him choose the most echological route. He took a 1 hour long trip, as suggested by Travlendar+. As he confirmed to follow the suggested route Carl is notified that a metro ticket is needed for the travel. He is unlucky because if the transporto would have been a train tickets were not to be a problem since he has, and added in his Travlendar+ preferences a train subscription, valid a whole year. Still there is no big deal because Travlendar+ offers the oppurtunity to buy the tickets in-app and so he does, in just a few seconds thanks to some valid payment services used by the application he receives a mail notifying the success of the operation.
 He then starts the journey on his bike, and after having pedaled for 10 minutes he gets to the nearest tram stop. He got to the terminus of the tram after 30 minutes, and while returning on his bike for the last stretch, as the app suggested he saw another tram, leaving that same stop with the conference venue displayed as destination. He was not upset though, because he does not like to take trams at that time of the night because of bad experiences he had. Only later he remembered that he himself was the one that imposed the time constrain on transport.
