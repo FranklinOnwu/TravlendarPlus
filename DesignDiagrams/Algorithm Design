@@ -1,0 +1,51 @@
+The followings are Java-code algorithms of minimizations, designed to meet the customers requirements.
+
+
+1)The input is a set of travels and the output is the travel in the set having the minimum cost
+
+
+public Travel minimizeCost (Arraylist<Travel> travels){
+
+	travels[0]=min;
+	
+    for(i=1; i<=travels.size(); i++) {
+      if(travels[i].totalCost<min.totalCost) {
+        min=travels.get(i);
+      }
+    }
+	
+	return min;
+}
+
+
+2)The input is a set of travels and the output is the travel in the set having the minimum carbon footprint
+
+public Travel minimizeCFP (Arraylist<Travel> travels){
+
+	travels[0]=min;
+	
+    for(i=1; i<=travels.size(); i++) {
+      if(travels[i].totalCFP<min.totalCFP) {
+        min=travels.get(i);
+      }
+    }
+	
+	return min;
+}
+
+
+
+3)The input is a set of travels and the output is the travel in the set having the minimum time needed
+
+public Travel minimizeCost (Arraylist<Travel> travels){
+
+	travels[0]=min;
+	
+    for(i=1; i<=travels.size(); i++) {
+      if(travels[i].totalDistance<min.totalDistance) {
+        min=travels.get(i);
+      }
+    }
+	
+	return min;
+}
