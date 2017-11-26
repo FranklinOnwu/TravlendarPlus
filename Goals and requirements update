@@ -1,3 +1,5 @@
+
+****************************************1.1 Goals****************************************
 Section [G.0] treats all the goals related to the registration to the application:-->REMOVED
 
 Section [G.1] treats all the goals related to the creation and personalization of an event:-->REMOVED
@@ -20,10 +22,10 @@ G.2.1 The user can find the quickest way to reach his events.
 G.2.2 The user can find the cheapest way to reach his events.
 G.2.3 The user can find the most ecological way to reach his events.
 G.2.4 The user can find ways to reach to his events through means that keep him/her protected from adverse weather conditions.
-G.2.5 The user can find travels for his events with selected constrains on time interval range for different transports.
-G.2.6 The user can find travels for his events, with a restriction on the maximum distance with the means.
-G.2.7 The user can find travels for his events with a choosen budget.
-G.2.8 The user can find travels for his events with means he/she selects to use.
+G.2.5 The user can find the best travels for his events with selected constrains on time interval range for different transports.
+G.2.6 The user can find the best travels for his events, with a restriction on the maximum distance with the means.
+G.2.7 The user can find the best travels for his events with a choosen budget.
+G.2.8 The user can find the best travels for his events with means he/she selects to use.
 
 Section [G.3] treats all the goals related to the customization of the Travlender’s settings:-->MODIFIED
 G.3.1 The user can add his/her public transports tickets or passes.-->REQUIREMENT
@@ -47,7 +49,71 @@ G.6.2 The user can take a car from a car sharing service.
 
 Section [G.7] treats all the goals related to the special event categories:-->REMOVED
 
+Section [G.7] treats all the goals related to special event:-->ADDED
+G.7.1 The user can decide a time interval where to arrange the event.
+G.7.2 The user can decide the amount of time reservation for the event.
+
 Section [G.8] treats all the goals related to the travel:-->REMOVED
+
+
+
+
+
+
+****************************************3.2 Funcional Requirements****************************************
+
+Section [R.0] treats all the requimerements related to the registration to the application:-->DELETED
+
+Section [R.1] treats all the requimerements related to the login:-->DELETED
+
+Section [R.1] treats the requirements related to the calendar:
+R.1.1 The system must keep track of the user's commitments
+
+Section [R.2] treats all the requimerements related to the creation or modification of events:
+R.2.1 The system must verify that the Travlender is available for the needed time for the event.
+R.2.2 The system must verify that the Travlendar has enough free time for the travel to the event.
+R.2.3 The system must control whether the insertion of the new event does not compromise the reachability to the previously fixed events.
+R.2.4 The system must inform the user when it is not possible to schedule his/her event in the allotted time.
+R.2.5 The system must insert the event asked by the Travlender when it's schedule is possibible.
+R.2.6 The system must suggest possible solutions to arrange conflicting events, either
+postponing the starting time of the next event or anticipating the ending time of the
+previous one.
+
+Section [R.3] treats all the requimerements related to the public, shared and non-shared transports:
+R.3.1 The system can locate the various bike sharing system in the city.
+R.3.2 The system can locate the various car sharing system in the city.
+R.3.3 The system can locate the different public transports stations in the city.
+R.3.4 The system must unlock a shared car when required.
+R.3.5 The system must unlock a shared bike when required.
+R.3.6 The system must let the Travlender book a taxi via app.
+R.3.7 The system must let the Travlender book a limousine via app.
+
+Section [R.4] treats all the requimerements related to the travel:
+R.4.1 The system must control if the (eventually) required tickets are already owned by
+the user.
+R.4.3 The system must establish the best route plan for the Travlender, according to his preferences.
+R.4.4 The system must not suggest the user to use owned car or bike in his travels from
+locations where those are not placed.
+R.4.5 The system must allow the Travlender to purchase the tickets via app.
+
+
+Section [R.5] treats all the requimerements related to the special events:-->
+R.5.1 The system must let the user add events that do not reserve any time (allows overlapping).
+R.5.2 The system must allow the user to add events scheduled in a flexible way given an available time slot interval and a reservation time.
+
+Section [R.6] treats the requirements related to the user's preferences personalization:
+R.6.1 The system can keep track of the transport passes owned by the Travlender.
+R.6.2 If asked so the system must notify the user in occurrence of events scheduled on days of
+adverse weather conditions.
+R.6.3 The system can keep track of the means owned and permitted by the Travlender
+R.6.4 The system must be able to compute the fastest available travel for the Travlenders event.
+R.6.5 The system must be able to compute the cheapest available travel for the Travlenders event.
+R.6.6 The system must be able to compute the most echological available travel for the Travlenders event.
+
+
+
+
+
 
 
 ****************************************3.4.3 Security****************************************
