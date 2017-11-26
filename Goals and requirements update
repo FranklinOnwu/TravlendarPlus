@@ -1,8 +1,6 @@
 
 ****************************************1.1 Goals****************************************
-Section [G.0] treats all the goals related to the registration to the application:-->REMOVED
 
-Section [G.1] treats all the goals related to the creation and personalization of an event:-->REMOVED
 G.1.1 The user can schedule a new event adding name, time slot, location, type of
 event and a description.
 G.1.2 The user can modify the name of the event.
@@ -17,7 +15,7 @@ G.1.9 The user can choose how many minutes earlier arrive to his/her destination
 G.1.10 The user can delete an existing event.
 G.1.11 The user can see all the events he/she has already scheduled.
 
-Section [G.2] treats all the goals related to the customization of the Travlender preferences:-->MODIFIED
+Section [G.2] treats all the goals related to the customization of the Travlender preferences:
 G.2.1 The user can find the quickest way to reach his events.
 G.2.2 The user can find the cheapest way to reach his events.
 G.2.3 The user can find the most ecological way to reach his events.
@@ -27,33 +25,28 @@ G.2.6 The user can find the best travels for his events, with a restriction on t
 G.2.7 The user can find the best travels for his events with a choosen budget.
 G.2.8 The user can find the best travels for his events with means he/she selects to use.
 
-Section [G.3] treats all the goals related to the customization of the Travlender’s settings:-->MODIFIED
-G.3.1 The user can add his/her public transports tickets or passes.-->REQUIREMENT
-G.3.2 The user can select all his/her owned means.-->REQUIREMENT
+Section [G.3] treats all the goals related to the customization of the Travlender’s settings:
 G.3.3 The user can find travels through transports accessible by people with disabilities.
 
-Section [G.4] treats all goals related to the purchase of non-shared transports:-->APPROVED
+Section [G.4] treats all goals related to the purchase of non-shared transports:
 G.4.1 The user can book a taxi.
 G.4.2 The user can book a limousine.
 
-Section [G.5] treats all the goals related to the purchase of public transports:-->APPROVED
+Section [G.5] treats all the goals related to the purchase of public transports:
 G.5.1 The user can buy a ticket for the metro.
 G.5.2 The user can buy a ticket for the bus.
 G.5.3 The user can buy a ticket for the trolleybus.
 G.5.4 The user can buy a ticket for the tram.
 G.5.5 The user can buy a ticket for the train.
 
-Section [G.6] treats all the goals related to the purchase of shared transports:-->APPROVED
+Section [G.6] treats all the goals related to the purchase of shared transports:
 G.6.1 The user can take a bike from a bike sharing service.
 G.6.2 The user can take a car from a car sharing service.
 
-Section [G.7] treats all the goals related to the special event categories:-->REMOVED
-
-Section [G.7] treats all the goals related to special event:-->ADDED
+Section [G.7] treats all the goals related to the special event categories:
 G.7.1 The user can decide a time interval where to arrange the event.
 G.7.2 The user can decide the amount of time reservation for the event.
 
-Section [G.8] treats all the goals related to the travel:-->REMOVED
 
 
 
@@ -61,18 +54,13 @@ Section [G.8] treats all the goals related to the travel:-->REMOVED
 
 
 ****************************************3.2 Funcional Requirements****************************************
-
-Section [R.0] treats all the requimerements related to the registration to the application:-->DELETED
-
-Section [R.1] treats all the requimerements related to the login:-->DELETED
-
 Section [R.1] treats the requirements related to the calendar:
 R.1.1 The system must keep track of the user's commitments
 
 Section [R.2] treats all the requimerements related to the creation or modification of events:
 R.2.1 The system must verify that the Travlender is available for the needed time for the event.
 R.2.2 The system must verify that the Travlendar has enough free time for the travel to the event.
-R.2.3 The system must control whether the insertion of the new event does not compromise the reachability to the previously fixed events.
+R.2.3 The system must ensure that the insertion of the new event does not compromise the reachability of the previously fixed events.
 R.2.4 The system must inform the user when it is not possible to schedule his/her event in the allotted time.
 R.2.5 The system must insert the event asked by the Travlender when it's schedule is possibible.
 R.2.6 The system must suggest possible solutions to arrange conflicting events, either
@@ -97,7 +85,7 @@ locations where those are not placed.
 R.4.5 The system must allow the Travlender to purchase the tickets via app.
 
 
-Section [R.5] treats all the requimerements related to the special events:-->
+Section [R.5] treats all the requimerements related to the special events:
 R.5.1 The system must let the user add events that do not reserve any time (allows overlapping).
 R.5.2 The system must allow the user to add events scheduled in a flexible way given an available time slot interval and a reservation time.
 
