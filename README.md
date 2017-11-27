@@ -1,7 +1,7 @@
 
 # TRAVLENDAR+
 # a travel and time aware calendar
-### a.a. 2017-2018 software engineering 2 project
+### a.y. 2017-2018 software engineering 2 project
 
 _Project developed by Franklin Onwu, Ivan Sanzeni and Matteo Vantadori_
 
