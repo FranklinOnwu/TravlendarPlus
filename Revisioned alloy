@@ -1,0 +1,466 @@
+open util/boolean
+/***********************************SIGNATURES**********************************/
+one sig User{
+	event: set Event,
+	pass: lone Pass,
+	preference: one Preference,
+	position: one Position,
+	disability: lone Bool,
+	maxFootVal, maxCostVal: lone Int,
+	safePublicTimeRide: lone Bool,
+	rainPrevention: lone Bool
+}{
+	maxFootVal>=0
+	maxCostVal>=0
+}
+
+one sig Weather{
+	rainyHours: set Rain
+}
+
+sig Rain{
+	startingTime: Int,
+	endingTime: Int
+}{
+	startingTime>=0
+	endingTime>startingTime
+}
+
+sig Preference{
+	fastest, cheapest, eco: lone Bool
+}{	
+	//one and only one preference will be chosen
+	fastest=True implies (no cheapest and no eco)
+	eco=True implies (no cheapest and no fastest)
+	cheapest=True implies (no fastest and no eco)
+
+	fastest=True or cheapest=True or eco=True
+}
+
+sig Pass{
+	metroPass, busPass, trainPass, trolleyBusPass: lone Bool
+}{
+	//when the passes exist there are always valid (true)
+	metroPass=True and  busPass=True and trainPass=True and trolleyBusPass= True
+}
+
+abstract sig Event {
+	startTime, endTime: one Int
+}{
+	startTime > 0
+	endTime > 0
+	startTime < endTime
+}
+
+sig TransferEvent extends Event{
+}
+
+abstract sig LocalEvent extends Event{
+	travel: some Travel,
+	choosenTravel: one Travel,
+	location: one Position,
+	preference: lone Preference,
+	travelTime: Int
+}{
+	all t:travel| t.lastStretch.endPosition=location
+	choosenTravel in travel
+}
+
+sig StandardEvent extends LocalEvent{
+}
+
+sig FlexibleEvent extends LocalEvent{
+	reservedTime: Int,
+	effectiveStartTime: Int,
+	effectiveEndTime:Int 
+}{
+	reservedTime=sub[effectiveEndTime,effectiveStartTime]
+	reservedTime>0
+	effectiveStartTime>0
+	effectiveEndTime>0
+	effectiveStartTime>=startTime
+	effectiveEndTime<=endTime
+}
+
+sig LastingEvent extends LocalEvent{
+	letsGoButton: set LetsGo
+}{
+	all g:letsGoButton| g.referingEvent=this
+}
+
+sig LetsGo{
+	letsGoTime:Int,
+	chosenTravel: one Travel,
+	referingEvent: one LastingEvent
+}{
+//The "lets go" button can be tapped when the suggested travel let you arrive during the event's interval
+	letsGoTime>=sub[referingEvent.startTime,chosenTravel.totalDuration]
+	letsGoTime<sub[referingEvent.endTime,chosenTravel.totalDuration]
+
+	chosenTravel.lastStretch.endPosition=referingEvent.location
+	letsGoTime>0
+}
+
+sig Travel{
+	stretch: some Stretch,
+	lastStretch: one Stretch,
+	totalCost: Int,
+	totalCFP: Int,
+	totalDuration: Int,
+	transport: some Transport,
+	foot: set Foot,
+	footLength:Int
+}{
+	totalCost = computeCost[stretch]
+	totalCFP = computeTotalCFP[stretch]
+	totalDuration = computeDuration[stretch]
+	totalCost>=0
+	totalCFP>=0
+	totalDuration>0
+	footLength>=0
+	footLength=computeFootLength[foot]
+
+	lastStretch in stretch
+	all s: stretch| s.transport in transport
+	no t:transport| (no s:stretch| s.transport=t)
+	all disj s1,s2:stretch| s1.transport!=s2.transport
+	no disj x1 ,x2: stretch | x1.startPosition = x2.startPosition
+	no disj x1,x2: stretch| x1.endPosition = x2.endPosition
+	one x:stretch|x.startPosition=User.position
+
+
+
+	//if a stretch is not the first then there's one stretch that ends where and when the first one starts
+	all x1:stretch |  x1.startPosition != User.position implies (one x2:stretch | (x1.startPosition = x2.endPosition and x1.startTime=x2.endTime))
+	//if a stretch is not the last then there's one stretch that starts where and when the first one ends
+	all x1:stretch | x1!=lastStretch implies (one x2:stretch | (x1.endPosition = x2.startPosition and x1.endTime=x2.startTime))------->sistemato
+}
+
+sig Stretch{
+	cost, length, duration, CFP: Int,
+	startPosition, endPosition: Position,
+	transport: one Transport,
+	startTime, endTime: Int
+}{
+	add[startTime,duration]=endTime
+	startTime>0
+	endTime>0
+	duration > 0
+	duration < 5
+	cost >= 0
+	CFP >= 0
+	length > 0
+	length <5  
+	startPosition!=endPosition
+	CFP=computeCFP[transport.pollution,length]
+
+	//for the private cars and booked vehicles the cost depends on the distance (fuel ecc..)
+	transport in Car or transport in Booked implies cost=mul[length, transport.cost]
+	//for the shared vehicles the cost depends on the time of use
+	transport in Shared  implies cost=mul[duration, transport.cost]
+	//for the public vehicles the cost depends on the vehicle itself
+	transport in Public implies cost=transport.cost
+
+	length=transport.meanDistance
+}
+
+abstract sig Transport{
+	pollution, cost: Int,
+	disabilitySupport: lone Bool,
+	meanDistance: Int
+}{
+	pollution >=0
+	pollution <5
+	cost<5
+}
+
+abstract sig Booked extends Transport{}
+{
+	pollution>0
+	cost >0
+}
+sig Taxi extends Booked{}
+sig Limo extends Booked{}
+
+abstract sig Shared extends Transport{}
+{
+	pollution=0
+	cost >0
+	no disabilitySupport
+}
+sig SharedBike extends Shared{}
+sig SharedCar extends Shared{}
+
+abstract sig Owned extends Transport {}
+sig Bike extends Owned{}
+{
+	pollution=0
+	cost=0
+	no disabilitySupport
+}
+sig Car extends Owned{}
+{
+	pollution>0
+	cost>0
+}
+
+sig Foot extends Owned{}
+{
+	pollution=0
+	cost=0
+	no disabilitySupport
+}
+
+abstract sig Public extends Transport {}
+{
+	disabilitySupport=True
+	pollution=0
+	cost>=0
+}
+sig Metro extends Public{}
+sig Bus extends Public{}
+sig Train extends Public{}
+sig TrolleyBus extends Public{}
+
+sig Position{}
+
+/***********************************FACT**********************************/
+
+//Each local event belongs to one of the categories
+fact {
+	Event = LocalEvent + TransferEvent
+	LocalEvent = StandardEvent + FlexibleEvent + LastingEvent
+	Transport = Booked + Shared + Owned + Public
+    Booked= Taxi+Limo
+    Owned= Foot+Bike+Car
+    Public= Bus+Train+Metro+TrolleyBus
+    Shared= SharedCar+SharedBike
+}
+
+//We represent only the elements that are used 
+fact{
+	all s:Stretch | s in Travel.stretch
+	all p:Pass | p in User.pass
+	all t:Travel| t in StandardEvent.travel or t in FlexibleEvent.travel or t in LetsGo.chosenTravel
+	all e: Event | e in User.event
+	all t: Transport | t in Stretch.transport
+	all p: Position | (p in Stretch.startPosition or p in Stretch.endPosition)
+	all b: Bool | ((b in Pass.metroPass or b in Pass.busPass or b in Pass.trainPass or b in Pass.trolleyBusPass or b in User.disability or b in Transport.disabilitySupport or
+			b in Preference.eco or b in Preference.fastest or b in Preference.cheapest or b in User.safePublicTimeRide or b in User.rainPrevention))
+	all p:Preference | p in User.preference or p in LocalEvent.preference
+	all r:Rain| r in Weather.rainyHours
+	all l:LetsGo| l in LastingEvent.letsGoButton
+}
+
+//all transports of the same type has the same level of pollution
+fact {
+	all t1,t2:Taxi| t1.pollution=t2.pollution
+	all l1,l2:Limo| l1.pollution=l2.pollution
+	all c1,c2:Car| c1.pollution=c2.pollution
+}
+
+// user's pass implies no cost for the equivalent public transport and user without pass implies positive cost for the equivalent public transport
+fact{
+	User.pass.metroPass=True iff Metro.cost=0
+	User.pass.trainPass=True iff Train.cost=0
+	User.pass.trolleyBusPass=True iff TrolleyBus.cost=0
+	User.pass.busPass=True iff Bus.cost=0
+}
+
+//the dedicated time in a flexible event is always less than the time interval
+fact{
+	all f:FlexibleEvent | f.reservedTime<sub[f.endTime,f.startTime]
+}
+
+//when a preference for the event is chosen the event's travel is the best according to the chosen preference
+
+fact{
+	all e:LocalEvent | e.preference.eco=True implies 
+		(all t:e.travel | t.totalCFP >= e.choosenTravel.totalCFP)
+}
+fact{
+	all e:LocalEvent | e.preference.cheapest=True implies 
+		(all t:Travel | t in e.travel implies t.totalCost >= e.choosenTravel.totalCost)
+}
+fact{
+	all e:LocalEvent | e.preference.fastest=True implies 
+		(all t:Travel | t in e.travel implies t.totalDuration >= e.choosenTravel.totalDuration)
+}
+
+//when no preference for the single event is chosen the event's travel is the best according to the user's default preference
+fact{
+	all e:LocalEvent | (allFalse[e]=True and User.preference.eco = True) implies
+		(all t:Travel | t in e.travel implies t.totalCFP >= e.choosenTravel.totalCFP)
+}
+fact{
+	all e:LocalEvent | (allFalse[e]=True and User.preference.fastest = True) implies
+		(all t:Travel | t in e.travel implies t.totalDuration >= e.choosenTravel.totalDuration)
+}
+fact{
+	all e:LocalEvent | (allFalse[e]=True and User.preference.cheapest = True) implies
+		(all t:Travel | t in e.travel implies t.totalCost >= e.choosenTravel.totalCost)
+}
+
+//if a user has disability option on his travels will not include travel means without disability support
+fact{
+	User.disability=True implies (all t:Travel| all s:t.stretch| s.transport.disabilitySupport=True)
+}
+
+//avoid overflow
+fact{
+	all e1,e2:Event| add[e1.endTime,e2.travelTime]>0
+	all e1,e2:Event| e1 in FlexibleEvent implies add[e1.effectiveEndTime,e2.travelTime]>0
+	all e:FlexibleEvent| sub[e.effectiveStartTime,e.travelTime]>0
+}
+
+//the events that most not overlap and must be distanciated at least by the travel duration
+fact{
+	all disj e1,e2:Event|( e1 not in LastingEvent and e2 not in LastingEvent) implies ((e1.startTime<=e2.startTime and e2.startTime<add[e1.endTime,e2.travelTime]) implies (e1 in FlexibleEvent or e2 in FlexibleEvent))
+	all disj e1,e2:Event|( e1 not in LastingEvent and e2 not in LastingEvent) implies ((e1.startTime<=e2.startTime and e2.startTime<e1.endTime) implies (e1 in FlexibleEvent or e2 in FlexibleEvent))	
+	all disj e1,e2:FlexibleEvent| (e1.effectiveStartTime<=e2.effectiveStartTime implies e2.effectiveStartTime>add[e1.effectiveEndTime,e2.travelTime])
+	all disj e1,e2:FlexibleEvent| (e1.effectiveStartTime<=e2.effectiveStartTime implies e2.effectiveStartTime>e1.effectiveEndTime)
+	all f:FlexibleEvent| (all e:Event |(( f.startTime<=e.startTime and e.startTime<f.endTime) implies ((f.effectiveEndTime<e.startTime) or e in LastingEvent or e in FlexibleEvent)))
+	all f:FlexibleEvent| (all e:Event |( f.startTime<=e.startTime and e.startTime<add[e.travelTime,f.endTime]) implies ((f.effectiveEndTime<add[e.travelTime,e.startTime]) or e in LastingEvent or e in FlexibleEvent))
+
+	all f:FlexibleEvent| all e:Event |( e.startTime<=f.startTime and f.startTime<e.endTime) implies ((f.effectiveStartTime>e.endTime) or e in LastingEvent or e in FlexibleEvent)
+	all f:FlexibleEvent| all e:Event |( e.startTime<=f.startTime and f.startTime<e.endTime) implies ((f.effectiveStartTime>add[f.travelTime,e.endTime]) or e in LastingEvent or e in FlexibleEvent)
+}
+
+//the time of travel for each local event is equivalent to the travel time of it's chosen travel
+fact{
+	all e:LocalEvent| e.travelTime=e.choosenTravel.totalDuration
+}
+
+
+//the travels programmed with the "let's go" button do not overlap with other travels or events with needed presence
+fact{
+	all g:LetsGo| all i:Int| (i>g.letsGoTime and i<add[g.letsGoTime,g.chosenTravel.totalDuration])
+						implies ((no s:StandardEvent| sub[s.startTime,s.choosenTravel.totalDuration]>i and s.endTime<g.chosenTravel.totalDuration) //no overlapping with standard events
+						and (no t:TransferEvent| t.startTime>i and t.endTime<g.chosenTravel.totalDuration) //no overlapping with transfer events
+						and (no f:FlexibleEvent| sub[f.effectiveStartTime,f.choosenTravel.totalDuration]>i and f.endTime<g.chosenTravel.totalDuration)) //no overlapping with flexible events
+
+//there's no overlapping between the "let's go" travels 
+	all disj g1,g2:LetsGo| g1.letsGoTime<=g2.letsGoTime implies (no i:Int| i>=g2.letsGoTime and i<=add[g1.letsGoTime,g1.chosenTravel.totalDuration])
+
+}
+
+fact{
+	all e:LocalEvent|e.startTime>=e.travelTime
+}
+
+
+//the travels cost must not exceed the maximum expence decided by the user
+fact{
+	all e:LocalEvent | e.choosenTravel.totalCost<=User.maxCostVal
+}
+
+
+//max foot distance
+fact{
+	all t:Travel| all f:Foot| f in t.foot iff f in t.transport
+	all t:Travel|computeFootLength[t.foot]<=User.maxFootVal
+}
+
+//limitation in the alloy sums requires stretch differentiations
+fact{
+	all e:LocalEvent| all t:e.travel| (all disj s1,s2:t.stretch| ((s1.duration!=s2.duration) and (s1.length!=s2.length) and
+				(s1.cost!=s2.cost or s1.cost=0) and (s1.CFP!=s2.CFP or s1.CFP=0)))
+}
+
+fact{
+	all disj s1,s2:Stretch| (s1.startPosition= s2.startPosition and s1.endPosition=s2.endPosition) implies s1.transport != s2.transport
+}
+
+
+//If the user asked so, he will not be advised to take public transportations in the night time (before 6 a.m)
+fact{
+	User.safePublicTimeRide=True implies (all s:Stretch| s.transport in Public implies (no i:Int| (i>=s.startTime and i<=s.endTime and rem[i,24]<6)))
+}
+
+//If the user asked so, he will not be advised to ride bike when the expected weather is rainy
+fact{
+	User.rainPrevention=True implies (all s:Stretch| s.transport in Bike implies (no r:Rain| (r.startingTime=<s.endTime and r.endingTime>=s.startTime)))
+}
+
+//The travels are thought to end in correspondance of the starting of the user's partecipation to the event /////// 
+fact{
+	all s:StandardEvent| all t:s.travel| (t.lastStretch.endTime=s.startTime)
+	all f:FlexibleEvent| all t:f.travel| (t.lastStretch.endTime=f.effectiveStartTime)
+}
+
+//The rainy hours do not overlap
+fact{
+	all disj r1,r2:Rain| r1.startingTime<=r2.startingTime implies r1.endingTime<r2.startingTime
+}
+/***********************************FUNCTION**********************************/
+
+//return the total cost of a travel
+fun computeCost(stretch: set Stretch) : Int{
+	sum(cost[stretch])
+}
+
+//This function returns the carbon footprint of a stretch condsidering the vehicle pollution and the distance
+fun computeCFP ( pollution : Int , distance : Int ) : Int {
+	mul [ pollution , distance ]
+}
+
+//This function returns the total travel's CFP
+fun computeTotalCFP (stretch: set Stretch) :Int{
+	sum(CFP[stretch])
+}
+
+//This function returns the duration of the travel
+fun computeDuration ( stretch: set Stretch) : Int {
+	sum(duration[stretch])
+}
+
+//return True if the user doesn't set any preference in the event
+fun allFalse(event: LocalEvent): Bool{
+	(no event.preference.eco and no event.preference.cheapest and no event.preference.fastest)  implies True else False
+}
+
+//return the total foot distance in the travel
+fun computeFootLength(foot: set Travel.transport):Int{
+	sum (meanDistance[foot]) 
+}
+
+/***********************************ASSERT**********************************/
+
+//Travels done on foot do not exist if the user has the disability option on
+assert DisabilityNoWalking{
+	User.disability=True implies (all t:Travel | no s:Stretch|( s in t.stretch and s.transport=Foot))
+}
+
+// If the user has the bus pass the stretch's cost is nil
+assert FreeBusWithPass{
+	User.pass.busPass=True implies (all s:Stretch| s.transport=Bus implies s.cost=0)
+}
+
+// If there's a travel at night with public mean, then the safe ride option is not active
+assert SafePublicRide{
+	all s:Stretch| (s.transport in Public and s.startTime=2) implies User.safePublicTimeRide!=True
+}
+
+// A bike travel with the rain prevention option on means that there is no rain at that time
+assert RainPrevention{
+	(User.rainPrevention=True and one s:Stretch| s.transport in Bike) implies (no r:Rain| one s:Stretch| s.transport in Bike and (r.startingTime<s.endTime and r.endingTime>s.startTime))
+}
+
+/***********************************PRED**********************************/
+pred show {
+	#Public>0
+	#Booked>0
+	#Owned>0
+	#StandardEvent>0
+	#TransferEvent>0
+	#FlexibleEvent>0
+	#LastingEvent>0
+	#Travel.stretch>1
+}
+
+
+check	DisabilityNoWalking
+check	FreeBusWithPass
+check SafePublicRide
+check RainPrevention
+run show for 4 but 6 int
